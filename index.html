@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<style>
+    h1{
+        text-align: center;
+    }
+    .todo{
+        display: flex;
+        justify-content: center;
+    }
+    .in{
+        display: flex;
+        justify-content: center;
+    }
+    #i{
+        background-color: rgb(0, 162, 255);
+    }
+    button{
+        background-color: orange;
+        border: none;
+        height: 4vh;
+    }
+    input{
+        height: 3.3vh;
+        border-radius: 0;
+        border:1px solid black;
+        outline: none;
+        }
+    .cards{
+        width: 30vw;
+        height: 10vh;
+        background-color: #f4ff8d;
+        margin: 0 auto;
+        margin-top: 5vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow:7px 10px #f1eff1
+    }
+</style>
+<body>
+    <h1>Enter The Task</h1><br> <br>
+    <div class="todo">
+        
+    <div"><input id="in" type="text" placeholder="Enter Text"> <button id="i" onclick="log()">Submit</button> <button>Finish All</button></div>
+    </div>
+    <div class="task">
+
+    </div>
+    
+</body>
+<script>
+    var Div = document.querySelector(".task");
+    var Enter = document.querySelector("#i");
+    var html;
+    Div.addEventListener("click", function(){
+        var a = document.querySelectorAll(".cards")
+        console.log(a);
+        for (const card of a) {
+        card.addEventListener("click", function(event){
+            console.log(event);
+            if(event.detail){
+            card.style.textDecoration="line-through"
+            }
+        })   
+        }
+    })
+    function log(){
+        var task = document.querySelector("#in")
+        html = '<h1 class="cards"> '+ task.value +'</h1>'
+        Div.insertAdjacentHTML("afterend", html)
+        document.querySelector("#in").value = ""
+
+    }
+</script>
+</html>
